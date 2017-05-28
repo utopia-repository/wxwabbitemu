@@ -1,0 +1,20 @@
+Source: wxwabbitemu
+Section: math
+Priority: optional
+Maintainer: James Lu <bitflip3@gmail.com>
+Build-Depends: debhelper (>= 9), libwxgtk3.0-dev
+Standards-Version: 3.9.8
+Homepage: https://github.com/alberthdev/wxwabbitemu
+Vcs-Git: https://github.com/utopia-repository/wxwabbitemu
+Vcs-Browser: https://github.com/utopia-repository/wxwabbitemu
+
+Package: wxwabbitemu
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: cross-platform TI-8x emulator based on Wabbitemu
+ wxWabbitemu is a TI-8x emulator that uses the wxWidgets toolkit. It is based
+ off a decent TI-8x emulator, Wabbitemu.
+ .
+ wxWabbitemu supports loading any TI-8x variables, programs, apps, etc. It also
+ supports loading and saving calculator states, capturing screenshots,
+ debugging programs, and more.

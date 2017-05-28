@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=wxWabbitemu
+GenericName=TI-8x Emulator
+Exec=wxWabbitemu
+Icon=wabbiticon
+Type=Application
+Categories=Education;Math;
+Keywords=maths;math;graphing;calculator;emulator;TI;TI-8x;texas;instruments;

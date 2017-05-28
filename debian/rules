@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+DH_VERBOSE = 1
+BINDIR=debian/wxwabbitemu/usr/bin
+
+%:
+	dh $@ --parallel
+
+override_dh_auto_clean:
+	$(MAKE) clean
+
+override_dh_auto_install:
+	# make install hardcodes a /usr/local path, so skip that and use debian/install instead.
+	true
+
+# This get-orig-source rule creates a tarball given the Git URL and commit hash.
+# This looks at the "commithash" portion of the Debian package version, which is
+# in the format majorversion+gitXYZ~commithash-1.
+PACKAGE = $(shell dpkg-parsechangelog --show-field=Source)
+VERSION = $(shell dpkg-parsechangelog --show-field=Version)
+ORIG_VERSION = $(shell echo $(VERSION) | cut -f 1 -d '-')
+COMMIT = $(shell echo $(ORIG_VERSION) | rev | cut -f -1 -d '~' | rev)
+URL = https://github.com/alberthdev/wxwabbitemu
+
+get-orig-source:
+	# Cloning upstream repository.
+	git clone $(URL) "$(PACKAGE)-$(ORIG_VERSION)"
+	# Generating archive from commit.
+	cd "$(PACKAGE)-$(ORIG_VERSION)" && git archive -v $(COMMIT) -o \
+	../../$(PACKAGE)_$(ORIG_VERSION).orig.tar.gz
+	# Removing temporary Git tree.
+	rm -rf "$(PACKAGE)-$(ORIG_VERSION)"

@@ -1,0 +1,3 @@
+bin/wxWabbitemu usr/bin
+debian/wxWabbitemu.desktop usr/share/applications
+gui/wabbiticon.png /usr/share/icons/hicolor/16x16/apps
