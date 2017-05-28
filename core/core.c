@@ -158,7 +158,7 @@ unsigned char mem_write(memc *mem, unsigned short addr, char data) {
 	return  *(mem->banks[mc_bank(addr)].addr + mc_base(addr)) = data;
 }
 
-inline unsigned short read2bytes(memc *mem, unsigned short addr) {
+unsigned short read2bytes(memc *mem, unsigned short addr) {
 	return (mem_read(mem, addr) + (mem_read(mem, addr + 1) << 8));
 }
 
